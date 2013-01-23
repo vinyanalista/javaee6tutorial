@@ -30,7 +30,7 @@ public class Contato implements Serializable {
 	@JoinTable(name = "age_pertence",
 		joinColumns = @JoinColumn(name = "per_contato"),
 		inverseJoinColumns = @JoinColumn(name = "per_categoria"))
-	private List<Categoria> categorias = new ArrayList<Categoria>();;
+	private List<Categoria> categorias = new ArrayList<Categoria>();
 
 	public int getId() {
 		return id;

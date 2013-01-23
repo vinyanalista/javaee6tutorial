@@ -8,9 +8,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "age_categoria")
+@NamedQuery(name = Categoria.LISTAR_TODAS, query = "SELECT c FROM Categoria c")
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String LISTAR_TODAS = "Categoria.listarTodas";
 
 	@Id
 	@GeneratedValue

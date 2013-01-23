@@ -5,12 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "age_contato")
+@NamedQuery(name = Contato.LISTAR_TODOS, query = "SELECT c FROM Contato c")
 public class Contato implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String LISTAR_TODOS = "Contato.listarTodos";
 
 	@Id
 	@GeneratedValue
@@ -18,19 +25,26 @@ public class Contato implements Serializable {
 	private int id;
 
 	@Column(name = "con_nome", unique = true, nullable = false)
+	@NotNull(message = "Preenchimento obrigatório!")
+	@NotBlank(message = "Preenchimento obrigatório!")
+	@Size(min = 1, max = 25, message = "Não deve ultrapassar 25 caracteres!")
+	@Pattern(regexp = "[A-Za-z ]*", message = "Deve conter apenas letras maiúsculas e minúsculas, sem acentos ou cedilha, e espaços.")
 	private String nome;
 
 	@Column(name = "con_email")
+	@Email
 	private String email;
 
 	@Column(name = "con_telefone")
+	@Size(max = 11, message = "Telefone inválido!")
+	@Digits(fraction = 0, integer = 12, message = "Telefone inválido!")
 	private String telefone;
-	
+
 	@ManyToMany
 	@JoinTable(name = "age_pertence",
 		joinColumns = @JoinColumn(name = "per_contato"),
 		inverseJoinColumns = @JoinColumn(name = "per_categoria"))
-	private List<Categoria> categorias = new ArrayList<Categoria>();;
+	private List<Categoria> categorias = new ArrayList<Categoria>();
 
 	public int getId() {
 		return id;
@@ -63,7 +77,7 @@ public class Contato implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}

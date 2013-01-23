@@ -13,6 +13,9 @@
 		<module>exemplo01</module>
 		<module>exemplo02</module>
 		<module>exemplo03</module>
+		<module>exemplo04</module>
+		<module>exemplo05</module>
+		<module>exemplo06</module>
 	</modules>
 
 	<repositories>
@@ -51,6 +54,7 @@
 
 	<properties>
 		<exec-maven-plugin-version>1.2.1</exec-maven-plugin-version>
+		<hibernate-validator-version>4.2.0.Final</hibernate-validator-version>
 		<hibernate-version>4.0.1.Final</hibernate-version>
 		<javase-api-version>1.7</javase-api-version>
 		<junit-version>4.8.2</junit-version>

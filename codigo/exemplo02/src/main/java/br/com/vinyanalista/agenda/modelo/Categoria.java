@@ -29,5 +29,18 @@ public class Categoria implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Categoria)
+			return ((Categoria) obj).id == this.id;
+		else
+			return false;
+	}
 
+	@Override
+	public String toString() {
+		return nome;
+	}
+	
 }

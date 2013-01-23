@@ -5,12 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "age_categoria")
+@NamedQuery(name = Categoria.LISTAR_TODAS, query = "SELECT c FROM Categoria c")
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String LISTAR_TODAS = "Categoria.listarTodas";
 
 	@Id
 	@GeneratedValue
@@ -18,8 +24,12 @@ public class Categoria implements Serializable {
 	private Integer id;
 
 	@Column(name = "cat_nome", unique = true, nullable = false)
+	@NotNull(message = "Preenchimento obrigatório!")
+	@NotBlank(message = "Preenchimento obrigatório!")
+	@Size(min = 1, max = 20, message = "Não deve ultrapassar 20 caracteres!")
+	@Pattern(regexp = "[A-Za-z ]*", message = "Deve conter apenas letras maiúsculas e minúsculas, sem acentos ou cedilha, e espaços.")
 	private String nome;
-	
+
 	@ManyToMany(mappedBy = "categorias")
 	private List<Contato> contatos = new ArrayList<Contato>();
 
@@ -38,7 +48,7 @@ public class Categoria implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public List<Contato> getContatos() {
 		return contatos;
 	}
@@ -59,5 +69,4 @@ public class Categoria implements Serializable {
 	public String toString() {
 		return nome;
 	}
-
 }

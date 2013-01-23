@@ -8,9 +8,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "age_contato")
+@NamedQuery(name = Contato.LISTAR_TODOS, query = "SELECT c FROM Contato c")
 public class Contato implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String LISTAR_TODOS = "Contato.listarTodos";
 
 	@Id
 	@GeneratedValue
@@ -30,7 +33,7 @@ public class Contato implements Serializable {
 	@JoinTable(name = "age_pertence",
 		joinColumns = @JoinColumn(name = "per_contato"),
 		inverseJoinColumns = @JoinColumn(name = "per_categoria"))
-	private List<Categoria> categorias = new ArrayList<Categoria>();;
+	private List<Categoria> categorias = new ArrayList<Categoria>();
 
 	public int getId() {
 		return id;

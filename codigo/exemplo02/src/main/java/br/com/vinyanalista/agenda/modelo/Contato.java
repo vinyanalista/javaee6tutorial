@@ -49,5 +49,18 @@ public class Contato implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Contato)
+			return ((Contato) obj).id == this.id;
+		else
+			return false;
+	}
+	
+	@Override
+	public String toString() {
+		return nome;
+	}
 
 }
