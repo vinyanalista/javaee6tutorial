@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.vinyanalista</groupId>
+	<artifactId>exemplo07-servidor</artifactId>
+	<version>1.0</version>
+	<packaging>ejb</packaging>
+	<name>Exemplo 07 - Servidor</name>
+	<url>http://www.vinyanalista.com.br</url>
+
+	<properties>
+		<hibernate-validator-version>4.2.0.Final</hibernate-validator-version>
+		<hibernate-version>4.0.1.Final</hibernate-version>
+		<javax-ejb-version>3.1</javax-ejb-version>
+		<jboss-as-version>7.1.1.Final</jboss-as-version>
+		<maven-ejb-plugin-version>2.3</maven-ejb-plugin-version>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>ISO-8859-1</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator-version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.ejb</artifactId>
+			<version>${javax-ejb-version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>exemplo07</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>${jboss-as-version}</version>
+				<configuration>
+					<filename>${project.build.finalName}.jar</filename>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>${maven-ejb-plugin-version}</version>
+				<configuration>
+					<ejbVersion>${javax-ejb-version}</ejbVersion>
+					<generateClient>true</generateClient>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

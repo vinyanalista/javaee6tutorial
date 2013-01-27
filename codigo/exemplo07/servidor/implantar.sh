@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "*******************************************************************************"
-echo "Exemplo 03"
+echo "Exemplo 07 - Servidor"
 echo -e "*******************************************************************************\n"
-mvn clean compile test
+mvn clean install
+mvn jboss-as:deploy

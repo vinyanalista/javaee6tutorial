@@ -1,8 +1,9 @@
 @echo off
 echo.
 echo *******************************************************************************
-echo Exemplo 03
+echo Exemplo 07 - Servidor
 echo *******************************************************************************
 echo.
-call mvn clean compile test
+call mvn clean install
+call mvn jboss-as:deploy
 pause

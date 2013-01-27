@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>br.com.vinyanalista</groupId>
+		<artifactId>javaee6tutorial</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>exemplo07</artifactId>
+	<packaging>pom</packaging>
+	<name>Exemplo 07</name>
+	<url>http://www.vinyanalista.com.br</url>
+
+	<modules>
+		<module>servidor</module>
+		<module>cliente</module>
+	</modules>
+
+</project>

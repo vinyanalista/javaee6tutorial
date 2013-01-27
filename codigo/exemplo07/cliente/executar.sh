@@ -1,5 +1,5 @@
 #!/bin/bash
 echo "*******************************************************************************"
-echo "Exemplo 03"
+echo "Exemplo 07 - Cliente"
 echo -e "*******************************************************************************\n"
-mvn clean compile test
+mvn clean compile exec:java
