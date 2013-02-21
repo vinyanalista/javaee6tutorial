@@ -17,6 +17,8 @@
 		<module>exemplo05</module>
 		<module>exemplo06</module>
 		<module>exemplo07</module>
+		<module>exemplo08</module>
+		<module>exemplo09</module>
 	</modules>
 
 	<repositories>
@@ -60,7 +62,10 @@
 		<hibernate-version>4.0.1.Final</hibernate-version>
 		<javase-api-version>1.7</javase-api-version>
 		<javax-ejb-version>3.1</javax-ejb-version>
+		<javax-servlet-version>3.0</javax-servlet-version>
 		<jboss-as-version>7.1.1.Final</jboss-as-version>
+		<jsf-api-version>2.0</jsf-api-version>
+		<jsp-api-version>2.0</jsp-api-version>
 		<junit-version>4.8.2</junit-version>
 		<maven-compiler-plugin-version>2.3.2</maven-compiler-plugin-version>
 		<maven-exec-plugin-version>1.2.1</maven-exec-plugin-version>
