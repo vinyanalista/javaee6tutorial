@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<f:metadata>
+	<f:viewParam name="contato" value="#{cadastroBean.idDoContato}" />
+	<f:event listener="#{cadastroBean.preRenderView()}"
+		type="preRenderView" />
+</f:metadata>
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<ui:define name="titulo">
+		<h:outputText value="Adição de Contato"
+			rendered="#{cadastroBean.cadastro}" />
+		<h:outputText value="Alteração de Contato"
+			rendered="#{not cadastroBean.cadastro}" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<table>
+
+			<tr>
+				<td><h:outputLabel value="ID:" for="id"
+						rendered="#{not cadastroBean.cadastro}" /></td>
+				<td><h:outputText id="id" value="#{cadastroBean.contato.id}"
+						rendered="#{not cadastroBean.cadastro}" /></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="Nome:" for="nome" /></td>
+				<td><h:inputText id="nome" value="#{cadastroBean.contato.nome}"
+						style="width: 400px" /> <h:message for="nome" errorClass="erro" /></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="E-mail:" for="email" /></td>
+				<td><h:inputText id="email"
+						value="#{cadastroBean.contato.email}" style="width: 400px" /> <h:message
+						for="email" errorClass="erro" /></td>
+			</tr>
+
+			<tr>
+				<td><h:outputLabel value="Telefone:" for="telefone" /></td>
+				<td><h:inputText id="telefone"
+						value="#{cadastroBean.contato.telefone}" style="width: 400px" />
+					<h:message for="telefone" errorClass="erro" /></td>
+			</tr>
+
+		</table>
+
+		<p>
+			<rich:toolbar height="26" itemSeparator="grid">
+				<rich:toolbarGroup>
+				
+					<h:commandLink class="toolbar" id="confirmar"
+						action="#{cadastroBean.salvar()}">
+						<h:outputText value="Confirmar" />
+					</h:commandLink>
+					
+					<h:commandLink class="toolbar" id="cancelar"
+						action="#{navegacaoBean.irParaPaginaInicial()}">
+						<h:outputText value="Cancelar" />
+					</h:commandLink>
+					
+				</rich:toolbarGroup>
+			</rich:toolbar>
+		</p>
+
+	</ui:define>
+</ui:composition>
+</html>

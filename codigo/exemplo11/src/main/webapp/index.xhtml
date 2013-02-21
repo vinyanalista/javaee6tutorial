@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<h:head>
+	<title>Agenda de Contatos</title>
+	<style>
+		label {
+			font-weight: bold;
+		}
+	</style>
+</h:head>
+<h:body>
+	<h1>Agenda de Contatos</h1>
+	<hr />
+	<h:panelGrid columns="2">
+		<h:form>
+			<rich:extendedDataTable value="#{listaContatosBean.contatos}"
+				var="contato" selection="#{listaContatosBean.selecao}"
+				selectionMode="single">
+				<a4j:ajax execute="@form" event="selectionchange"
+					listener="#{listaContatosBean.atualizarContatoSelecionado}"
+					render=":contato_dados" />
+				<rich:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{contato.nome}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">Telefone</f:facet>
+					<h:outputText value="#{contato.telefone}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">E-mail</f:facet>
+					<h:outputText value="#{contato.email}" />
+				</rich:column>
+			</rich:extendedDataTable>
+		</h:form>
+
+		<a4j:outputPanel id="contato_dados">
+			<rich:panel header="Dados do contato"
+				rendered="#{not empty listaContatosBean.contatoSelecionado}">
+				<h:panelGrid columns="2">
+
+					<h:outputLabel value="ID:" for="contato_id" />
+					<h:outputText id="contato_id"
+						value="#{listaContatosBean.contatoSelecionado.id}" />
+
+					<h:outputLabel value="Nome:" for="contato_nome" />
+					<h:outputText id="contato_nome"
+						value="#{listaContatosBean.contatoSelecionado.nome}" />
+
+					<h:outputLabel value="Telefone:" for="contato_telefone" />
+					<h:outputText id="contato_telefone"
+						value="#{listaContatosBean.contatoSelecionado.telefone}" />
+
+					<h:outputLabel value="E-mail:" for="contato_email" />
+					<h:outputText id="contato_email"
+						value="#{listaContatosBean.contatoSelecionado.email}" />
+
+				</h:panelGrid>
+			</rich:panel>
+		</a4j:outputPanel>
+	</h:panelGrid>
+	<hr />
+	<i>Desenvolvimento de Aplicações Corporativas com a Plataforma Java
+		EE 6</i>
+</h:body>
+</html>

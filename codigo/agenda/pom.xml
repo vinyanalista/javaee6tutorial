@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.vinyanalista</groupId>
+	<artifactId>agenda</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<name>Agenda de Contatos</name>
+	<url>http://www.vinyanalista.com.br</url>
+
+	<modules>
+		<module>agenda-model</module>
+		<module>agenda-business</module>
+		<module>agenda-web</module>
+	</modules>
+
+	<repositories>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<properties>
+		<hibernate-validator-version>4.2.0.Final</hibernate-validator-version>
+		<hibernate-version>4.0.1.Final</hibernate-version>
+		<javase-api-version>1.7</javase-api-version>
+		<javax-ejb-version>3.1</javax-ejb-version>
+		<jboss-as-version>7.1.1.Final</jboss-as-version>
+		<jsf-api-version>2.0</jsf-api-version>
+		<junit-version>4.8.2</junit-version>
+		<maven-compiler-plugin-version>2.3.2</maven-compiler-plugin-version>
+		<maven-war-plugin-version>2.1.1</maven-war-plugin-version>
+		<mysql-connector-j-version>5.1.18</mysql-connector-j-version>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>ISO-8859-1</project.reporting.outputEncoding>
+		<richfaces-version>4.3.0.Final</richfaces-version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin-version}</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>${javase-api-version}</source>
+					<optimize>true</optimize>
+					<target>${javase-api-version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

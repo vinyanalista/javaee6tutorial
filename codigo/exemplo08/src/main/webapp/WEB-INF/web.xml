@@ -5,6 +5,7 @@
 	id="WebApp_ID" version="3.0">
 
 	<display-name>exemplo08</display-name>
+	
 	<servlet>
 		<servlet-name>lista-contatos</servlet-name>
 		<servlet-class>br.com.vinyanalista.agenda.web.servlets.ListaContatosServlet</servlet-class>

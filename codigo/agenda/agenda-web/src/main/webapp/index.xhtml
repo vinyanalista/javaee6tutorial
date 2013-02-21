@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<ui:composition template="/WEB-INF/_template.xhtml">
+	<ui:define name="titulo">Página Inicial</ui:define>
+	<ui:define name="conteudo">
+		<rich:extendedDataTable style="height:300px;"
+			selection="#{listagemBean.selecao}"
+			value="#{listagemBean.listaDeContatos}" var="contato"
+			selectionMode="single">
+			<a4j:ajax execute="@form" event="selectionchange"
+				listener="#{listagemBean.atualizarContatoSelecionado}"
+				render="@form" />
+			<f:facet name="header">
+				<h:outputText value="Contatos" />
+			</f:facet>
+
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{contato.id}" />
+			</rich:column>
+
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText value="Nome" />
+				</f:facet>
+				<h:outputText value="#{contato.nome}" />
+			</rich:column>
+
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText value="E-mail" />
+				</f:facet>
+				<h:outputText value="#{contato.email}" />
+			</rich:column>
+
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText value="Telefone" />
+				</f:facet>
+				<h:outputText value="#{contato.telefone}" />
+			</rich:column>
+
+		</rich:extendedDataTable>
+
+		<br />
+		<rich:toolbar height="26" itemSeparator="grid">
+			<rich:toolbarGroup>
+
+				<h:link class="toolbar" id="adicionar" outcome="cadastro.xhtml"
+					title="Adicionar">
+					<h:outputText value="Adicionar" />
+				</h:link>
+
+				<h:link class="toolbar" id="visualizar" outcome="contato.xhtml"
+					rendered="#{not empty listagemBean.contatoSelecionado}"
+					title="Visualizar">
+					<f:param name="contato"
+						value="#{listagemBean.contatoSelecionado.id}" />
+					<h:outputText value="Visualizar" />
+				</h:link>
+
+				<h:link class="toolbar" id="alterar" outcome="cadastro.xhtml"
+					rendered="#{not empty listagemBean.contatoSelecionado}"
+					title="Alterar">
+					<f:param name="contato"
+						value="#{listagemBean.contatoSelecionado.id}" />
+					<h:outputText value="Alterar" />
+				</h:link>
+
+				<h:link class="toolbar" id="remover" outcome="remocao.xhtml"
+					rendered="#{not empty listagemBean.contatoSelecionado}"
+					title="Remover">
+					<f:param name="contato"
+						value="#{listagemBean.contatoSelecionado.id}" />
+					<h:outputText value="Remover" />
+				</h:link>
+
+			</rich:toolbarGroup>
+		</rich:toolbar>
+
+	</ui:define>
+</ui:composition>
+</html>

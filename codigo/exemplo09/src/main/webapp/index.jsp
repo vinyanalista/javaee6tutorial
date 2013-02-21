@@ -1,6 +1,6 @@
-<%@ page import="br.com.vinyanalista.agenda.modelo.Contato"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="br.com.vinyanalista.agenda.modelo.Contato"%>
 <html>
 <head>
 <title>Agenda de Contatos</title>

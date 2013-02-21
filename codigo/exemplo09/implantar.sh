@@ -1,5 +1,7 @@
 #!/bin/bash
+# Executar com o JBoss AS ja iniciado
 echo "*******************************************************************************"
 echo "Exemplo 09"
 echo -e "*******************************************************************************\n"
-mvn clean package jboss-as:deploy
+mvn clean compile package jboss-as:deploy
+echo -e "\nA aplicacao ja pode ser acessada pelo endereco http://localhost:8080/exemplo09/"
