@@ -1,13 +1,18 @@
 package br.com.vinyanalista.agenda.web.mb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
+import br.com.vinyanalista.agenda.dao.CategoriaDAOLocal;
 import br.com.vinyanalista.agenda.dao.ContatoDAOLocal;
+import br.com.vinyanalista.agenda.modelo.Categoria;
 import br.com.vinyanalista.agenda.modelo.Contato;
 import br.com.vinyanalista.agenda.web.util.JSFMessages;
 
@@ -25,6 +30,9 @@ public class CadastroBean implements Serializable {
 
 	@EJB
 	private ContatoDAOLocal daoContato;
+	
+	@EJB
+	private CategoriaDAOLocal daoCategoria;
 
 	public void preRenderView() {
 		if (contato == null) {
@@ -82,6 +90,14 @@ public class CadastroBean implements Serializable {
 
 	public void setIdDoContato(String idDoContato) {
 		this.idDoContato = idDoContato;
+	}
+	
+	public List<SelectItem> getListaDeCategorias() {
+		List<SelectItem> listaDeCategorias = new ArrayList<SelectItem>();
+		for (Categoria categoria : daoCategoria.listarTodas()) {
+			listaDeCategorias.add(new SelectItem(categoria, categoria.getNome()));
+		}
+		return listaDeCategorias;
 	}
 
 }

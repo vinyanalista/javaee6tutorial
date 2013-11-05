@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import br.com.vinyanalista.agenda.modelo.Contato;
 
@@ -14,7 +15,7 @@ public class ContatoDAO implements ContatoDAORemote, ContatoDAOLocal, Serializab
 
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(unitName = "agenda")
+	@PersistenceContext(unitName = "agenda", type = PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
 
 	public Contato inserir(Contato contato) {

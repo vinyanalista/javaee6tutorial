@@ -48,22 +48,30 @@
 					<h:message for="telefone" errorClass="erro" /></td>
 			</tr>
 
+			<tr>
+				<td><h:outputLabel value="Categoria:" for="categoria" /></td>
+				<td><h:selectManyListbox converter="#{categoriaConverter}"
+						id="categoria" value="#{cadastroBean.contato.categorias}">
+						<f:selectItems value="#{cadastroBean.listaDeCategorias}" />
+					</h:selectManyListbox></td>
+			</tr>
+
 		</table>
 
 		<p>
 			<rich:toolbar height="26" itemSeparator="grid">
 				<rich:toolbarGroup>
-				
+
 					<h:commandLink class="toolbar" id="confirmar"
 						action="#{cadastroBean.salvar()}">
 						<h:outputText value="Confirmar" />
 					</h:commandLink>
-					
-					<h:commandLink class="toolbar" id="cancelar"
-						action="#{navegacaoBean.irParaPaginaInicial()}">
+
+					<h:commandLink class="toolbar" id="cancelar" action="index.xhtml"
+						immediate="true">
 						<h:outputText value="Cancelar" />
 					</h:commandLink>
-					
+
 				</rich:toolbarGroup>
 			</rich:toolbar>
 		</p>
